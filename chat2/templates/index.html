@@ -26,7 +26,8 @@
                 const name = nameInput.value;
                 const msg = msgInput.value;
                 if (tms === true) {
-                    let date = new Date()
+                    let a = new Date()
+                    let date = a + ":"
                     fetch('/send_message', {
                         method: 'POST',
                         headers: {
