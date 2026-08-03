@@ -14,7 +14,7 @@ def send_message():
     name = data['name']
     message = data['msg']
     date = data['date']
-    messages.append(f"{name} {date}: {message}")
+    messages.append(f"{name}: {message}: {date}")
     return jsonify({'status': 'success', 'message': message})
 
 @app.route('/response')
