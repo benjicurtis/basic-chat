@@ -27,17 +27,23 @@
                 const msg = msgInput.value;
                 if (tms === true) {
                     let date = new Date()
+                    fetch('/send_message', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ name, date, msg })
+                    })
                 } else {
                     let date = ":"
-                }
-                //no trimming of the message, send it as is
-                fetch('/send_message', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
+                    fetch('/send_message', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ name, date, msg })
-                })
+                    })
+                }
             }
             async function getResponse() {
                 const response = await fetch('/response')
