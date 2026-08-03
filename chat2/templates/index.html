@@ -20,13 +20,14 @@
             function sendMessage() {
                 const name = nameInput.value;
                 const msg = msgInput.value;
+                const date = new Date()
                 //no trimming of the message, send it as is
                 fetch('/send_message', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ name, msg })
+                    body: JSON.stringify({ name, date, msg })
                 })
             }
             async function getResponse() {
