@@ -10,17 +10,26 @@
         <input type="text" id="name" placeholder="Type your name here..."><br>
         <p>Message:</p>
         <input type="text" id="msg" placeholder="Type your message here...">
+        <button id="Timestamp" onclick="toggle()">
         <button id="sendsBtn" onclick="sendMessage()">Send</button>
         <div id="chatBox"></div>
         <script>
+            let tms = true
             const sendBtn = document.getElementById('sendBtn');
             const nameInput = document.getElementById('name');
             const msgInput = document.getElementById('msg');
             const chatBox = document.getElementById('chatBox');
+            function toggle(){
+                tms = !tms;
+            }
             function sendMessage() {
                 const name = nameInput.value;
                 const msg = msgInput.value;
-                let date = new Date()
+                if (tms === true) {
+                    let date = new Date()
+                } else {
+                    let date = ""
+                }
                 //no trimming of the message, send it as is
                 fetch('/send_message', {
                     method: 'POST',
