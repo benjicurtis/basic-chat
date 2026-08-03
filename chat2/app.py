@@ -13,7 +13,8 @@ def send_message():
     data = request.get_json()
     name = data['name']
     message = data['msg']
-    messages.append(f"{name}: {message}")
+    date = data['date']
+    messages.append(f"{name} {date}: {message}")
     return jsonify({'status': 'success', 'message': message})
 
 @app.route('/response')
