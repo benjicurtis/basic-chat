@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>chat</title>
+    </head>
+    <body style="background-color: black; color: white;">
+        <p>Name:</p>
+        <input type="text" id="name" placeholder="Type your name here..."><br>
+        <p>Message:</p>
+        <input type="text" id="msg" placeholder="Type your message here..."><br>
+        <button id="sendsBtn" onclick="sendMessage()">Send</button>
+        <div id="chatBox"></div>
+        <script>
+            const sendBtn = document.getElementById('sendBtn');
+            const nameInput = document.getElementById('name');
+            const msgInput = document.getElementById('msg');
+            const chatBox = document.getElementById('chatBox');
+            function sendMessage() {
+                const name = nameInput.value;
+                const msg = msgInput.value;
+                //no trimming of the message, send it as is
+                fetch('/send_message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, msg })
+                })
+            }
+            async function getResponse() {
+                const response = await fetch('/response')
+                const data = await response.json();
+                chatBox.innerHTML = ""
+                for (let messages of data.messages) {
+                    chatBox.innerHTML += messages + '<br>';
+                }
+            }
+            setInterval(getResponse, 1000);
+        </script>
+    </body>
+</html>
