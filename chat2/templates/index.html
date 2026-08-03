@@ -14,26 +14,14 @@
         <button id="sendsBtn" onclick="sendMessage()">Send</button>
         <div id="chatBox"></div>
         <script>
-            let showing_date = false
             const sendBtn = document.getElementById('sendBtn');
             const nameInput = document.getElementById('name');
             const msgInput = document.getElementById('msg');
             const chatBox = document.getElementById('chatBox');
-            function toggle(){
-                if (showing_date === false) {
-                    let showing_date = true 
-                } else {
-                    let showing_date = false 
-                }
-            }
             function sendMessage() {
                 const name = nameInput.value;
                 const msg = msgInput.value;
-                if (showing_date = true){
-                    let date = new Date()
-                } else {
-                    let date = ""
-                }
+                let date = new Date()
                 //no trimming of the message, send it as is
                 fetch('/send_message', {
                     method: 'POST',
