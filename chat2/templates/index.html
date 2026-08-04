@@ -17,6 +17,7 @@
         <div id="timestamponoff"></div>
         <script>
             let tms = false
+            let time = "On"
             const sendBtn = document.getElementById('sendBtn');
             const nameInput = document.getElementById('name');
             const msgInput = document.getElementById('msg');
@@ -24,9 +25,9 @@
             function toggle(){
                 tms = !tms;
                 if (tms === true){
-                    let time = On
+                    time = "On"
                 } else {
-                    let time = Off
+                    time = "Off"
                 }
                 document.getElementById('timestamponoff').innerHTML = "timestamps are:" + time;
             }
