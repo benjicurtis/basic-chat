@@ -23,7 +23,12 @@
             const chatBox = document.getElementById('chatBox');
             function toggle(){
                 tms = !tms;
-                document.getElementById('timestamponoff').innerHTML = "<p> time is: </p>" + tms;
+                if (tms === true){
+                    let time = On
+                } else {
+                    let time = Off
+                }
+                document.getElementById('timestamponoff').innerHTML = "timestamps are:" + time;
             }
             function sendMessage() {
                 const name = nameInput.value;
