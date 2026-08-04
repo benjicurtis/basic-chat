@@ -22,13 +22,13 @@
             const nameInput = document.getElementById('name');
             const msgInput = document.getElementById('msg');
             const chatBox = document.getElementById('chatBox');
-            if (tms === true){
-                time = "On"
-            } else {
-                time = "Off"
-            }
             function toggle(){
                 tms = !tms;
+                if (tms === true){
+                    time = "On"
+                } else {
+                    time = "Off"
+                }
                 document.getElementById('timestamponoff').innerHTML = "timestamps are: " + time;
             }
             function sendMessage() {
@@ -53,11 +53,6 @@
                     },
                     body: JSON.stringify({ name, date, msg })
                     })
-                    if (tms === true){
-                        time = "On"
-                    } else {
-                        time = "Off"
-                    }
                 }
             }
             async function getResponse() {
