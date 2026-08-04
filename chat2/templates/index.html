@@ -14,6 +14,7 @@
         <button id="Timestamp" onclick="toggle()">time?</button>
         <button id="sendsBtn" onclick="sendMessage()">Send</button>
         <div id="chatBox"></div>
+        <div> id="timestamponoff"</div>
         <script>
             let tms = false
             const sendBtn = document.getElementById('sendBtn');
@@ -22,6 +23,7 @@
             const chatBox = document.getElementById('chatBox');
             function toggle(){
                 tms = !tms;
+                docment.getElementById('timestamponoff').innerHTML = <p> time is: </p> + tms;
             }
             function sendMessage() {
                 const name = nameInput.value;
