@@ -16,8 +16,6 @@ def send_message():
     date = data['date']
     messages.append(f"{name} {date} {message}")
     return jsonify({'status': 'success', 'message': message})
-def enterClick():
-    send_message()
 @app.route('/response')
 def get_messages():
     return jsonify({'messages': messages})
