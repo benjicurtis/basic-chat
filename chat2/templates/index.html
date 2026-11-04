@@ -1,16 +1,14 @@
 <html>
 <head>
-    <style>
-    </style>
-</head>
-<body>
-    <h1>basic chat v2</h1>
     <title>Basic Chat v2</title>
-    <p>beta v1</p>
-    <div id="chatbox" style="width: 400px; height: 300px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px;"></div>
-    <input type="text" id="usernameInput" autocomplete="off" placeholder="Type your username here..." style="width: 300px;">
-    <input type="text" id="messageInput" autocomplete="off" placeholder="Type your message here..." style="width: 300px;">
-    <button onclick="sendMessage()">Send</button>
+</head>
+<body style="background-color: honeydew;">
+    <h1 style="color: hotpink">basic chat v2</h1>
+    <p style="color: hotpink">beta v1</p>
+    <div id="chatbox" style="width: 400px; height: 300px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; color: hotpink;"></div>
+    <input style="background-color: white; color: hotpink;" type="text" id="usernameInput" autocomplete="off" placeholder="Type your username here..." style="width: 300px;">
+    <input style="background-color: white; color: hotpink;" type="text" id="messageInput" autocomplete="off" placeholder="Type your message here..." style="width: 300px;">
+    <button style="background-color: white; color: hotpink;" onclick="sendMessage()">Send</button>
     <script>
         const chatbox = document.getElementById("chatbox");
         function sendMessage() {
@@ -33,7 +31,7 @@
             chatbox.innerHTML = "";
             messages.forEach(msg => {
                 const messageElement = document.createElement("p");
-                messageElement.textContent = `${msg.username}: ${msg.message}`;
+                messageElement.innerHTML = `${msg.username}: ${msg.message}`;
                 chatbox.appendChild(messageElement);
             });
         }
