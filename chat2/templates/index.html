@@ -36,6 +36,11 @@
             });
         }
         setInterval(fetchMessages, 1000);
+        async function resetMessages() {
+            await fetch("/resetMsg", { method: "POST" });
+            chatbox.innerHTML = "";
+        }
+        setInterval(resetMessages, 300000);
     </script>
 </body>
 </html>
