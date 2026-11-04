@@ -46,6 +46,11 @@
             await fetch("/resetMsg", { method: "POST" });
             chatbox.innerHTML = "";
         }
+        usernameInput.addEventListener('blur', function() {
+            if (this.value.trim() !== "") {
+                this.readOnly = true;
+            }
+        })
         document.addEventListener("keydown", function(event) {
             if (event.key === "Enter") {
             sendMessage();
