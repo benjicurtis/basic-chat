@@ -15,5 +15,9 @@ def sendMsg():
 @app.route("/getMsg", methods=["GET"])
 def getMsg():
     return jsonify(messages)
+@app.route("/resetMsg", methods=["POST"])
+def resetMsg():
+    messages.clear()
+    return jsonify({"status": "success", "message": "Messages reset."})
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
