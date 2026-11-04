@@ -31,12 +31,21 @@
         async function fetchMessages() {
             const response = await fetch("/getMsg");
             const messages = await response.json();
+            const editor = "editor"
             chatbox.innerHTML = "";
-            messages.forEach(msg => {
-                const messageElement = document.createElement("p");
-                messageElement.textContent = `${msg.username}: ${msg.message}`;
-                chatbox.appendChild(messageElement);
-            });
+            if(usernameInput === "editor12345qjdigneifhajsu") {
+                messages.forEach(msg => {
+                    const messageElement = document.createElement("p");
+                    messageElement.innerHTML = `${editor}: ${msg.message}`;
+                    chatbox.appendChild(messageElement);
+                });
+            } else {
+                messages.forEach(msg => {
+                    const messageElement = document.createElement("p");
+                    messageElement.textContent = `${msg.username}: ${msg.message}`;
+                    chatbox.appendChild(messageElement);
+                });
+            }
             scrollToBottom();
         }
         setInterval(fetchMessages, 1000);
