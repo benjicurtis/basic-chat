@@ -25,6 +25,9 @@
                 })
             })
         }
+        function scrollToBottom() {
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
         async function fetchMessages() {
             const response = await fetch("/getMsg");
             const messages = await response.json();
@@ -41,6 +44,7 @@
             chatbox.innerHTML = "";
         }
         setInterval(resetMessages, 300000);
+        setInterval(scrollToBottom, 500);
     </script>
 </body>
 </html>
