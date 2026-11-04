@@ -37,14 +37,19 @@
                 messageElement.textContent = `${msg.username}: ${msg.message}`;
                 chatbox.appendChild(messageElement);
             });
+            scrollToBottom();
         }
         setInterval(fetchMessages, 1000);
         async function resetMessages() {
             await fetch("/resetMsg", { method: "POST" });
             chatbox.innerHTML = "";
         }
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+            sendMessage();
+            }
+        });
         setInterval(resetMessages, 300000);
-        setInterval(scrollToBottom, 500);
     </script>
 </body>
 </html>
