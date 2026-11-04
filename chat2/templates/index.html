@@ -2,10 +2,10 @@
 <head>
     <title>Basic Chat v2</title>
 </head>
-<body style="background-color: honeydew;">
+<body style="background-color: white;">
     <h1 style="color: cornflowerblue">basic chat v2</h1>
     <p style="color: cornflowerblue">beta v1</p>
-    <div id="chatbox" style="width: 400px; height: 300px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; color: cornflowerblue;"></div>
+    <div id="chatbox" style="width: 600px; height: 500px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; color: cornflowerblue;"></div>
     <input style="background-color: white; color: cornflowerblue;" type="text" id="usernameInput" autocomplete="off" placeholder="Type your username here..." style="width: 300px;">
     <input style="background-color: white; color: cornflowerblue;" type="text" id="messageInput" autocomplete="off" placeholder="Type your message here..." style="width: 300px;">
     <button style="background-color: white; color: cornflowerblue;" onclick="sendMessage()">Send</button>
@@ -44,7 +44,7 @@
             chatbox.innerHTML = "";
         }
         setInterval(resetMessages, 300000);
-        setInterval(scrollToBottom, 500);
+        setInterval(scrollToBottom, 10000);
     </script>
 </body>
 </html>
