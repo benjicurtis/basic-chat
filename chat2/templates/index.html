@@ -36,7 +36,7 @@
             chatbox.innerHTML = "";
             messages.forEach(msg => {
                 const messageElement = document.createElement("p");
-                messageElement.textContent = `${msg.username}: ${msg.message}`;
+                messageElement.innerHTML = `${msg.username}: ${msg.message}`;
                 chatbox.appendChild(messageElement);
             });
             scrollToBottom();
