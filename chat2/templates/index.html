@@ -15,16 +15,21 @@
         function sendMessage() {
             const usernameInput = document.getElementById("usernameInput");
             const messageInput = document.getElementById("messageInput");
-            fetch("/sendMsg", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username: usernameInput.value,
-                    message: messageInput.value
+            if (messageInput === "") {
+                alert("please enter a message")
+            } else {
+                fetch("/sendMsg", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: usernameInput.value,
+                        message: messageInput.value
+                    })
                 })
-            })
+            }
+            messageInput = "";
         }
         function scrollToBottom() {
             chatbox.scrollTop = chatbox.scrollHeight;
