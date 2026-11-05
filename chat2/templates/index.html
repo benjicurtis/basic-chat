@@ -53,7 +53,7 @@
             const response = await fetch("/getActiveUsers");
             const data = await response.json();
             const activeUsersElement = document.getElementById("activeUsers");
-            activeUsersElement.textContent = `people online: ${data.active_users}`;
+            activeUsersElement.innerHTML = `people online: ${data.active_users}`;
         }
         setInterval(fetchMessages, 1000);
         async function resetMessages() {
