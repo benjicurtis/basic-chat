@@ -4,13 +4,11 @@
 </head>
 <body style="background-color: whitesmoke;">
     <h1 style="color: rebeccapurple; font-family: Arial, sans-serif;">Basic Chat v2</h1>
-    <p style="color: rebeccapurple">Beta v2.5 (still laced with bugs)</p>
-    <div id="chatbox" style="width: 400px; height: 300px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; color: rebeccapurple; font-family: Arial, sans-serif;"></div>
-    <div>
-        <input style="background-color: whitesmoke; color: rebeccapurple;" type="text" id="usernameInput" autocomplete="off" placeholder="Type your username here..." style="width: 300px;">
-        <input style="background-color: whitesmoke; color: rebeccapurple;" type="text" id="messageInput" autocomplete="off" placeholder="Type your message here..." style="width: 300px;">
-        <button style="background-color: whitesmoke; color: rebeccapurple;" onclick="sendMessage()">Send</button>
-    </div>
+    <p style="color: rebeccapurple">Beta v2.0</p>
+    <div id="chatbox" style="width: 700px; height: 600px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; color: rebeccapurple; font-family: Arial, sans-serif;"></div>
+    <input style="width: 200px; height: 50px; background-color: whitesmoke; color: rebeccapurple;" type="text" id="usernameInput" autocomplete="off" placeholder="Type your username here..." style="width: 300px;">
+    <input style="width: 200px; height: 50px; background-color: whitesmoke; color: rebeccapurple;" type="text" id="messageInput" autocomplete="off" placeholder="Type your message here..." style="width: 300px;">
+    <button style="width: 200px; height: 50px; background-color: whitesmoke; color: rebeccapurple;" onclick="sendMessage()">Send</button>
     <script>
         const chatbox = document.getElementById("chatbox");
         function sendMessage() {
@@ -33,30 +31,29 @@
         async function fetchMessages() {
             const response = await fetch("/getMsg");
             const messages = await response.json();
+            const editor = "editor"
             chatbox.innerHTML = "";
-            messages.forEach(msg => {
-                const messageElement = document.createElement("p");
-                messageElement.innerHTML = `${msg.username}: ${msg.message}`;
-                chatbox.appendChild(messageElement);
-            });
-            scrollToBottom();
+            if (usernameInput === "editor12345tteraisfstdbnhadfyxhc") {
+                messages.forEach(msg => {
+                    const messageElement = document.createElement("p");
+                    messageElement.innerHTML = `${editor}: ${msg.message}`;
+                    chatbox.appendChild(messageElement);
+                });
+            } else {
+                messages.forEach(msg => {
+                    const messageElement = document.createElement("p");
+                    messageElement.textContent = `${msg.username}: ${msg.message}`;
+                    chatbox.appendChild(messageElement);
+                });
+            }
         }
         setInterval(fetchMessages, 1000);
         async function resetMessages() {
             await fetch("/resetMsg", { method: "POST" });
             chatbox.innerHTML = "";
         }
-        usernameInput.addEventListener('blur', function() {
-            if (this.value.trim() !== "") {
-                this.readOnly = true;
-            }
-        })
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-            sendMessage();
-            }
-        });
-        setInterval(resetMessages, 1000000);
+        setInterval(resetMessages, 300000);
+        setInterval(scrollToBottom, 500);
     </script>
 </body>
 </html>
