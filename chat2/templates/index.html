@@ -4,7 +4,7 @@
 </head>
 <body style="background-color: whitesmoke;">
     <h1 style="color: rebeccapurple; font-family: Arial, sans-serif;">Basic Chat 2</h1>
-    <p style="color: rebeccapurple">Early Access v4.0</p>
+    <p style="color: rebeccapurple">Early Access v4.5</p>
     <p style="color: rebeccapurple" id="activeUsers">people online: 0</p>
     <div id="chatbox" style="width: 500px; height: 400px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; color: rebeccapurple; font-family: Arial, sans-serif;"></div>
     <input style="width: 130px; height: 20px; background-color: whitesmoke; color: rebeccapurple;" type="text" id="usernameInput" autocomplete="off" placeholder="username">
@@ -57,7 +57,7 @@
             }
         })
         window.addEventListener("load", async function() {
-            await fetch("/increaseActiveUsers", { method: "POST" }); 
+            navigator.sendBeacon("/increaseActiveUsers");
         });
         window.addEventListener("pagehide", async function() {
             navigator.sendBeacon("/decreaseActiveUsers");
