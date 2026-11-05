@@ -1,4 +1,4 @@
-\<html>
+<html>
 <head>
     <title>Basic Chat 2</title>
 </head>
@@ -41,11 +41,10 @@
 
         }
         document.addEventListener("load", async function() {
-            activeUsers.innerHTML += 1;
+            await fetch("/increaseActiveUsers", { method: "POST" }); 
         });
         document.addEventListener("beforeunload", async function() {
-            activeUsers.innerHTML -= 1;
-            chatbox.innerHTML += `<p style='color: red;'>${usernameInput.value} has left the chat.</p>`;
+            await fetch("/decreaseActiveUsers", { method: "POST" });
         });
         setInterval(fetchMessages, 1000);
         async function resetMessages() {
