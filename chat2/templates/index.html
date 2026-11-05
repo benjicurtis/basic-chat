@@ -14,6 +14,7 @@
         function sendMessage() {
             const usernameInput = document.getElementById("usernameInput");
             const messageInput = document.getElementById("messageInput");
+            chatbox.innerHTML = "";
             fetch("/sendMsg", {
                 method: "POST",
                 headers: {
