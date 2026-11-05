@@ -4,12 +4,17 @@
 </head>
 <body style="background-color: whitesmoke;">
     <h1 style="color: rebeccapurple; font-family: Arial, sans-serif;">Basic Chat 2</h1>
-    <p style="color: rebeccapurple">Early Access v3</p>
+    <p style="color: rebeccapurple">Early Access v4.0</p>
     <p style="color: rebeccapurple" id="activeUsers">people online: 0</p>
     <div id="chatbox" style="width: 500px; height: 400px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; color: rebeccapurple; font-family: Arial, sans-serif;"></div>
     <input style="width: 130px; height: 20px; background-color: whitesmoke; color: rebeccapurple;" type="text" id="usernameInput" autocomplete="off" placeholder="username">
     <input style="width: 130px; height: 20px; background-color: whitesmoke; color: rebeccapurple;" type="text" id="messageInput" autocomplete="off" placeholder="message">
     <button style="width: 130px; height: 20px; background-color: whitesmoke; color: rebeccapurple;" onclick="sendMessage()">Send</button>
+    <display closed>
+        <summary>whats new?</summary>
+        <p>1. messages now appear at the top 2. anti spam was added so people have to time the message manualy every time 
+        3. though unreliable, people can see the amount of people online 4. autoscroll is disabled</p>
+    </display>
     <script>
         const chatbox = document.getElementById("chatbox");
         function sendMessage() {
