@@ -17,7 +17,7 @@ def sendMsg():
     return jsonify({"status": "success", "message": "Message received."})
 @app.route("/getMsg", methods=["GET"])
 def getMsg():
-    return jsonify(messages)
+    return jsonify(messages.reverse())
 @app.route("/resetMsg", methods=["POST"])
 def resetMsg():
     messages.clear()
