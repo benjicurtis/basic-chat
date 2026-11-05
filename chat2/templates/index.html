@@ -43,11 +43,8 @@
         window.addEventListener("load", async function() {
             await fetch("/increaseActiveUsers", { method: "POST" }); 
         });
-        window.addEventListener("beforeunload", async function() {
-            await fetch("/decreaseActiveUsers", {
-                method: "POST",
-                keepalive: true
-            });
+        window.addEventListener("pagehide", async function() {
+            navigator.sendBeacon("/decreaseActiveUsers");
         });
         async function fetchActiveUsers() {
             const response = await fetch("/getActiveUsers");
