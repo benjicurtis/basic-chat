@@ -5,7 +5,7 @@
 <body style="background-color: whitesmoke;">
     <h1 style="color: rebeccapurple; font-family: Arial, sans-serif;">Basic Chat 2</h1>
     <p style="color: rebeccapurple">Beta v2.5</p>
-    <p style="color: rebeccapurple" id="activeUsers">0</p>
+    <p style="color: rebeccapurple" id="activeUsers">people online: 0</p>
     <div id="chatbox" style="width: 500px; height: 650px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; color: rebeccapurple; font-family: Arial, sans-serif;"></div>
     <input style="width: 130px; height: 20px; background-color: whitesmoke; color: rebeccapurple;" type="text" id="usernameInput" autocomplete="off" placeholder="username">
     <input style="width: 130px; height: 20px; background-color: whitesmoke; color: rebeccapurple;" type="text" id="messageInput" autocomplete="off" placeholder="message">
@@ -46,12 +46,19 @@
         document.addEventListener("beforeunload", async function() {
             await fetch("/decreaseActiveUsers", { method: "POST" });
         });
+        async function fetchActiveUsers() {
+            const response = await fetch("/getActiveUsers");
+            const data = await response.json();
+            const activeUsersElement = document.getElementById("activeUsers");
+            activeUsersElement.innerText = `people online: ${data.active_users}`;
+        }
         setInterval(fetchMessages, 1000);
         async function resetMessages() {
             await fetch("/resetMsg", { method: "POST" });
             chatbox.innerHTML = "";
         }
         setInterval(resetMessages, 300000);
+        setInterval(fetchActiveUsers, 1000);
         setInterval(scrollToBottom, 500);
     </script>
 </body>
