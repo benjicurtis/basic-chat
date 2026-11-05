@@ -51,6 +51,11 @@
             });
 
         }
+        document.addEventListener("keydown", function {
+            if (event.key === "enter") {
+                sendMessage()
+            }
+        })
         window.addEventListener("load", async function() {
             await fetch("/increaseActiveUsers", { method: "POST" }); 
         });
