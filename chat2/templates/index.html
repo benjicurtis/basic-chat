@@ -52,11 +52,6 @@
             const activeUsersElement = document.getElementById("activeUsers");
             activeUsersElement.innerHTML = `people online: ${data.active_users}`;
         }
-        async function scrollCheck() {
-            const respond = await fetch("/recentSend");
-            const data = await respond.json()
-            scrollToBottom()
-        }
         setInterval(fetchMessages, 1000);
         async function resetMessages() {
             await fetch("/resetMsg", { method: "POST" });
