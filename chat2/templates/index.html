@@ -15,7 +15,7 @@
         function sendMessage() {
             const usernameInput = document.getElementById("usernameInput");
             const messageInput = document.getElementById("messageInput");
-            if (messageInput.value() === "") {
+            if (messageInput.value === "") {
                 alert("please enter a message")
             } else {
                 fetch("/sendMsg", {
@@ -29,7 +29,7 @@
                     })
                 })
             }
-            messageInput.value() = "";
+            messageInput.value = "";
         }
         function scrollToBottom() {
             chatbox.scrollTop = chatbox.scrollHeight;
