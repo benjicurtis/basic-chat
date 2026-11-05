@@ -35,6 +35,6 @@ def decreaseActiveUsers():
 @app.route("/getActiveUsers", methods=["GET"])
 def getActiveUsers():
     global active_users
-    return jsonify({"active users": active_users})
+    return jsonify({"active_users": active_users})
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
