@@ -39,6 +39,9 @@
             });
 
         }
+        document.addEventListener("beforeunLoad", async function() {
+            chatbox.innerHTML += `<p style='color: red;'>${usernameInput.value} has left the chat.</p>`;
+        });
         setInterval(fetchMessages, 1000);
         async function resetMessages() {
             await fetch("/resetMsg", { method: "POST" });
