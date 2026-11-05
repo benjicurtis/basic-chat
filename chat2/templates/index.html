@@ -40,11 +40,14 @@
             });
 
         }
-        document.addEventListener("load", async function() {
+        window.addEventListener("load", async function() {
             await fetch("/increaseActiveUsers", { method: "POST" }); 
         });
-        document.addEventListener("beforeunload", async function() {
-            await fetch("/decreaseActiveUsers", { method: "POST" });
+        window.addEventListener("beforeunload", async function() {
+            await fetch("/decreaseActiveUsers", {
+                method: "POST",
+                keepalive: true
+            });
         });
         async function fetchActiveUsers() {
             const response = await fetch("/getActiveUsers");
@@ -58,8 +61,8 @@
             chatbox.innerHTML = "";
         }
         setInterval(resetMessages, 300000);
-        setInterval(fetchActiveUsers, 1000);
-        setInterval(scrollToBottom, 500);
+        setInterval(fetchActiveUsers, 2000);
+        setInterval(scrollToBottom, 1000);
     </script>
 </body>
 </html>
