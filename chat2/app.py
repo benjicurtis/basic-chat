@@ -32,7 +32,7 @@ def decreaseActiveUsers():
     global active_users
     active_users -= 1
     return jsonify({"status": "success", "message": "Active users decreased."})
-@app.route("/getActiveUsers", methods=["POST"])
+@app.route("/getActiveUsers", methods=["GET"])
 def getActiveUsers():
     global active_users
     return jsonify({"active users": active_users})
