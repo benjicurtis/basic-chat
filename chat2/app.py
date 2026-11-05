@@ -14,6 +14,7 @@ def home():
 def sendMsg():
     data = request.get_json()
     messages.append(data)
+    scrollNow()
     return jsonify({"status": "success", "message": "Message received."})
 @app.route("/getMsg", methods=["GET"])
 def getMsg():
@@ -36,5 +37,8 @@ def decreaseActiveUsers():
 def getActiveUsers():
     global active_users
     return jsonify({"active_users": active_users})
+@app.route("/scrollCheck", methods=["POST"])
+def scrollNow():
+    return jsonify({"status": "success", "message": "scroll."})
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
