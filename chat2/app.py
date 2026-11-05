@@ -37,7 +37,7 @@ def decreaseActiveUsers():
 def getActiveUsers():
     global active_users
     return jsonify({"active_users": active_users})
-@app.route("/scrollCheck", methods=["POST"])
+@app.route("/recentSend", methods=["POST"])
 def scrollNow():
     return jsonify({"status": "success", "message": "scroll."})
 if __name__ == '__main__':
