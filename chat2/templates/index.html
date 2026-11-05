@@ -15,7 +15,7 @@
         function sendMessage() {
             const usernameInput = document.getElementById("usernameInput");
             const messageInput = document.getElementById("messageInput");
-            if (messageInput.value().trim.() === "") {
+            if (messageInput.value().trim() === "") {
                 alert("please enter a message")
             } else {
                 fetch("/sendMsg", {
