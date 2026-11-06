@@ -1,40 +1,22 @@
 from flask import Flask, render_template, request, jsonify
-
 app = Flask(__name__)
 
 messages = []
 
-global active_users
-active_users = 0
+usersActive = []
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
-@app.route("/sendMsg", methods=["POST"])
-def sendMsg():
+@app.route("/messageSent", methods=["POST"])
+def messageSent():
     data = request.get_json()
     messages.append(data)
-    return jsonify({"status": "success", "message": "Message received."})
+    if len(messages) > 70:
+        messages.pop(0)
+    return jsonify({"status": "success", "message": "Message received successfully."}), 200
 @app.route("/getMsg", methods=["GET"])
 def getMsg():
     return jsonify(messages[::-1])
-@app.route("/resetMsg", methods=["POST"])
-def resetMsg():
-    messages.clear()
-    return jsonify({"status": "success", "message": "Messages reset."})
-@app.route("/increaseActiveUsers", methods=["POST"])
-def increaseActiveUsers():
-    global active_users
-    active_users += 1
-    return jsonify({"status": "success", "message": "Active users increased."})
-@app.route("/decreaseActiveUsers", methods=["POST"])
-def decreaseActiveUsers():
-    global active_users
-    active_users -= 1
-    return jsonify({"status": "success", "message": "Active users decreased."})
-@app.route("/getActiveUsers", methods=["GET"])
-def getActiveUsers():
-    global active_users
-    return jsonify({"active_users": active_users})
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
