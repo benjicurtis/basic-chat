@@ -32,7 +32,7 @@
                     })
                 })
             }
-            message.textContent = "";
+            message.value = "";
         }
         async function getMsg(){
             const chatbox = document.getElementById("chatbox")
@@ -46,7 +46,7 @@
             });
         }
         document.addEventListener("keydown", function() {
-            if (event.key === "enter") {
+            if (e.key === "Enter") {
                 send()
             }
         })
