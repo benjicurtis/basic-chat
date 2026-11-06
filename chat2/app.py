@@ -12,7 +12,7 @@ def index():
 def messageSent():
     data = request.get_json()
     messages.append(data)
-    if len(messages) > 70:
+    if len(messages) > 100:
         messages.pop(0)
     return jsonify({"status": "success", "message": "Message received successfully."}), 200
 @app.route("/getMsg", methods=["GET"])
