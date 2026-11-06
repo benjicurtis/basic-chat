@@ -1,80 +1,44 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Basic Chat 2</title>
-</head>
-<body style="background-color: whitesmoke;">
-    <h1 style="color: rebeccapurple; font-family: Arial, sans-serif;">Basic Chat 2</h1>
-    <p style="color: rebeccapurple">Early Access v4.5</p>
-    <p style="color: rebeccapurple" id="activeUsers">people online: 0</p>
-    <div id="chatbox" style="width: 500px; height: 400px; border: 1px solid #ccc; overflow-y: scroll; padding: 10px; color: rebeccapurple; font-family: Arial, sans-serif;"></div>
-    <input style="width: 130px; height: 20px; background-color: whitesmoke; color: rebeccapurple;" type="text" id="usernameInput" autocomplete="off" placeholder="username">
-    <input style="width: 130px; height: 20px; background-color: whitesmoke; color: rebeccapurple;" type="text" id="messageInput" autocomplete="off" placeholder="message">
-    <button style="width: 130px; height: 20px; background-color: whitesmoke; color: rebeccapurple;" onclick="sendMessage()">Send</button>
-    <h1 style="color: rebeccapurple; font-family: Arial, sans-serif;">******************************************</h1>
-    <display>
-        <summary>Whats New?</summary>
-        <p>1. messages now appear at the top 2. anti spam was added so people have to time the message manualy every time 
-        3. though unreliable, people can see the amount of people online 4. autoscroll is disabled</p>
-    </display>
-    <script>
-        const chatbox = document.getElementById("chatbox");
-        function sendMessage() {
-            const usernameInput = document.getElementById("usernameInput");
-            const messageInput = document.getElementById("messageInput");
-            if (messageInput.value === "") {
-                alert("please enter a message")
-            } else {
-                fetch("/sendMsg", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        username: usernameInput.value,
-                        message: messageInput.value
-                    })
+    <head>
+        <title>Basic Chat</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body style="background-color: peachpuff;">
+        <h1 class="title">Basic Chat 2</h1>
+        <p class="text" >v5.0</p>
+        <input  class="rounded-box" id="usernameBox" placeholder="username"/>
+        <input  class="rounded-box" id="msgBox" placeholder="message"/>
+        <button id="sendBtn" onclick="send()" class="rounded-box">Send</button>
+        <div id="chatbox" class="chatbox"></div>
+        <script>
+        function send(){
+            const username = document.getElementById("usernameBox")
+            const message = document.getElementById("msgBox")
+            const chatbox = document.getElementById("chatbox")
+                fetch("/messageSent", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify ({
+                    username: username.value,
+                    message: message.value
                 })
-            }
-            messageInput.value = "";
+            })
         }
-        function scrollToBottom() {
-            chatbox.scrollTop = chatbox.scrollHeight;
-        }
-        async function fetchMessages() {
+        async function getMsg(){
+            const chatbox = document.getElementById("chatbox")
             const response = await fetch("/getMsg");
-            const messages = await response.json();
-            chatbox.innerHTML = "";
-            messages.forEach(msg => {
-                const messageElement = document.createElement("p");
-                messageElement.innerHTML = `${msg.username}: ${msg.message}`;
-                chatbox.appendChild(messageElement);
-            });
-
-        }
-        document.addEventListener("keydown", function() {
-            if (event.key === "enter") {
-                sendMessage()
-            }
-        })
-        window.addEventListener("load", async function() {
-            navigator.sendBeacon("/increaseActiveUsers");
-        });
-        window.addEventListener("pagehide", async function() {
-            navigator.sendBeacon("/decreaseActiveUsers");
-        });
-        async function fetchActiveUsers() {
-            const response = await fetch("/getActiveUsers");
             const data = await response.json();
-            const activeUsersElement = document.getElementById("activeUsers");
-            activeUsersElement.innerHTML = `people online: ${data.active_users}`;
-        }
-        setInterval(fetchMessages, 1000);
-        async function resetMessages() {
-            await fetch("/resetMsg", { method: "POST" });
             chatbox.innerHTML = "";
+            data.forEach(message => {
+                const chatElement = document.createElement("p");
+                chatElement.innerHTML = `${message.username}: ${message.message}`;
+                chatbox.appendChild(chatElement)
+            });
         }
-        setInterval(resetMessages, 300000);
-        setInterval(fetchActiveUsers, 2000);
-    </script>
-</body>
+        setInterval(getMsg, 1000)
+        </script>
+    </body>
 </html>
