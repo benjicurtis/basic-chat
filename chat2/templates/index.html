@@ -18,16 +18,20 @@
             const username = document.getElementById("usernameBox")
             const message = document.getElementById("msgBox")
             const chatbox = document.getElementById("chatbox")
+            if (message.value === "") {
+                alert("enter a message")
+            } else {
                 fetch("/messageSent", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify ({
-                    username: username.value,
-                    message: message.value
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify ({
+                        username: username.value,
+                        message: message.value
+                    })
                 })
-            })
+            }
             message.textContent = "";
         }
         async function getMsg(){
