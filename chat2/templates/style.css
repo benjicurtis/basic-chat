@@ -1,0 +1,21 @@
+.rounded-box {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: mintcream;
+    color: black;
+    border-radius: 5px;
+}
+.chatbox {
+    height: 400px;
+    overflow-y: scroll;
+    width: 400px;
+    border: 3px solid black;
+}
+.text {
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+}
+.title {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+}
