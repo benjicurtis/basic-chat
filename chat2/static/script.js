@@ -22,7 +22,7 @@ async function getMsg(){
         chatbox.appendChild(newMsg)
     })
 } 
-document.getElementById("keydown" function(event.key) {
+document.addEventListener("keydown" function(event.key) {
     if (event.key === "Enter") {
         send()
     }
