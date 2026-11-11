@@ -6,7 +6,7 @@
     border-radius: 5px;
 }
 .chatbox {
-    height: 97.5%;
+    height: 90%;
     overflow-y: scroll;
     width: 100%;
     border: 2px solid grey;
@@ -25,4 +25,8 @@
 }
 .body {
     background-color: mintcream;
+}
+#util{
+    height: 10%;
+    margin: 0px;
 }
