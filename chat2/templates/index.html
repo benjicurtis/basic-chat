@@ -1,56 +1,17 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>Regular Chat</title>
-        <link rel="stylesheet" type="text/css" href="static/style.css">
+        <title>
+            Basic Chat
+        </title>
+        <link rel="stylesheet" href="static/style.css"/>
     </head>
-    <body class="body">
-        <h1 class="title">Basic Chat 2</h1>
-        <p class="text" >v5.0</p>
-        <input  class="rounded-box" id="usernameBox" placeholder="username"/>
-        <input  class="rounded-box" id="msgBox" placeholder="message"/>
-        <button id="sendBtn" onclick="send()" class="rounded-box">Send</button>
+    <body>
+        <h1 class="title">Basic Chat</h1>
+        <p class="text" >v6</p>
+        <input class="input" id="username" placeholder="username"/>
+        <input class="input" id="message" placeholder="message"/>
+        <button class="button" id="sendBtn" onclick="send()">Send</button>
         <div id="chatbox" class="chatbox"></div>
-        <p>whats new?</p>
-        <p>1. version five was coded from scratch again for the third time 2. enter to send 3. actual css file instaid of inline 4. removed broken people online counter 5. the 5 minute reset idea was scrapped. Instaid there is a whole new system where there is 100 messages max, and when it reaches the limit and someone types something it removes the oldest message to make room for the newest one</p>
-        <script>
-        function send(){
-            const username = document.getElementById("usernameBox")
-            const message = document.getElementById("msgBox")
-            const chatbox = document.getElementById("chatbox")
-            if (message.value === "") {
-                alert("enter a message")
-            } else {
-                fetch("/messageSent", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify ({
-                        username: username.value,
-                        message: message.value
-                    })
-                })
-            }
-            message.value = "";
-        }
-        async function getMsg(){
-            const chatbox = document.getElementById("chatbox")
-            const response = await fetch("/getMsg");
-            const data = await response.json();
-            chatbox.innerHTML = "";
-            data.forEach(message => {
-                const chatElement = document.createElement("p");
-                chatElement.innerHTML = `${message.username}: ${message.message}`;
-                chatbox.appendChild(chatElement)
-            });
-        }
-        document.addEventListener("keydown", function() {
-            if (event.key === "Enter") {
-                send()
-            }
-        })
-        setInterval(getMsg, 1000)
-        </script>
+        <script src="static/script.js"></script>
     </body>
 </html>
