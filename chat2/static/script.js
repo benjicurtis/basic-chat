@@ -22,4 +22,9 @@ async function getMsg(){
         chatbox.appendChild(newMsg)
     })
 } 
+document.addEventListener("keydown", function(event.key) {
+    if (event.key === "Enter"){
+        send()
+    }
+})
 setInterval(getMsg, 1000)
