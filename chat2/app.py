@@ -17,6 +17,6 @@ def sendMsg():
 
 @app.route("/getMsg", methods=["GET"])
 def getMsg():
-    return jsonify(messages[:-1]), 200
+    return jsonify(messages[::-1]), 200
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
