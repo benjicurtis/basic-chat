@@ -13,7 +13,8 @@ def sendMsg():
     messages.append(data)
     if len(messages) > 100:
         messages.pop(0)
-    return jsonify({"status": "success", "messages": "message recived"}), 200
+    return jsonify({"status": "success", "messages": "message received"}), 200
+
 @app.route("/getMsg", methods=["GET"])
 def getMsg():
     return jsonify(messages[:-1]), 200
