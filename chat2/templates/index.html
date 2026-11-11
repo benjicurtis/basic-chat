@@ -3,7 +3,7 @@
         <title>
             Basic Chat
         </title>
-        <link rel="stylesheet" href="static/style.css"/>
+        <link rel="stylesheet" href="{{url_for('static', filename='script.js')}}"/>
     </head>
     <body>
         <h1 class="title">Basic Chat</h1>
@@ -12,6 +12,6 @@
         <input class="input" id="message" placeholder="message"/>
         <button class="button" id="sendBtn" onclick="send()">Send</button>
         <div id="chatbox" class="chatbox"></div>
-        <script src="static/script.js"></script>
+        <script src="{{url_for('static', filename='script.js')}}"></script>
     </body>
 </html>
