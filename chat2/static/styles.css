@@ -1,7 +1,7 @@
 .rounded-box {
     font-family: Arial, sans-serif;
     font-size: 16px;
-    background-color: #D3D0CB;
+    background-color: #69A2B0;
     color: black;
     border-radius: 5px;
 }
@@ -11,17 +11,17 @@
     width: 900px;
     font-family: Arial, sans-serif;
     font-size: 20px;
-    border: 3px solid #393E41;
+    border: 3px solid #69A2B0;
 }
 .text {
     font-family: Arial, sans-serif;
     font-size: 25px;
-    color: #393E41;
+    color: #69A2B0;
 }
 .title {
     font-family: Arial, sans-serif;
     font-size: 30px;
-    color: #393E41;
+    color: #69A2B0;
 }
 .body {
     background-color: blanchedalmond;
