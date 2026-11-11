@@ -3,15 +3,14 @@
         <title>
             Regular Chat
         </title>
+        <link rel="stylesheet" href="static/styles.css">
     </head>
     <body class="body">
-        <div id="util">
-            <h1 class="title">Regular Chat</h1>
-            <p class="text" >v6</p>
-            <input class="input" id="username" placeholder="username"/>
-            <input class="input" id="message" placeholder="message"/>
-            <button class="button" id="sendBtn" onclick="send()">Send</button>
-        </div>
+        <h1 class="title">Regular Chat</h1>
+        <p class="text" >v6</p>
+        <input class="input" id="username" placeholder="username"/>
+        <input class="input" id="message" placeholder="message"/>
+        <button class="button" id="sendBtn" onclick="send()">Send</button>
         <div id="chatbox" class="chatbox"></div>
         <script src="{{url_for('static', filename='script.js')}}"></script>
     </body>
